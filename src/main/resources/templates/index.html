@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>DDPFM</title>
+
+         <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    </head>
+    <body>
+    
+	<style>
+		table {
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		th, td {
+		  padding: 8px;
+		  text-align: left;
+		  border-bottom: 1px solid #ddd;
+		}
+		
+		tr:hover {background-color:#f5f5f5;}
+	</style>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Directorio de Personas Fisicas y Morales</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Dummy Heading</p>
+                    <li>
+                   	    <a href="/">Home</a>
+                        <a href="new">Nuevo Directorio</a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Agregar</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="new">Nuevo Directorio</a></li>
+                            <li><a href="#">Nuevo Domicilio</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <h2>Lista DDPFM</h2>  
+                <table>
+			        <thead>
+			            <tr>
+			                <th>ID</th>
+			                <th>Tipo de Persona</th>
+			                <th>Id de Persona</th>
+			                <th>Id de Domicilio</th>
+			                <th>Tipo de Domicilio</th>
+			                <th>Fecha de Inicio</th>
+			                <th>Fecha de Fin</th>
+			            </tr>
+			        </thead>
+			       	 <tbody>
+			            <tr th:each="ddpfm : ${listSale}">
+			                <td th:text="${ddpfm.ID}">ID</td>
+			                <td th:text="${ddpfm.TIPO_DE_PERSONA}">TIPO_DE_PERSONA</td>
+			                <td th:text="${ddpfm.ID_DE_PERSONA}">ID_DE_PERSONA</td>
+			                <td th:text="${ddpfm.ID_DE_DOMICILIO}">ID_DE_DOMICILIO</td>
+			                <td th:text="${ddpfm.TIPO_DE_DOMICILIO}">TIPO_DE_DOMICILIO</td>
+			                <td th:text="${ddpfm.FECHA_DE_INICIO}">FECHA_DE_INICIO</td>
+			                <td th:text="${ddpfm.FECHA_DE_FIN}">FECHA_DE_FIN</td>
+			                <td>
+			                   <a th:href="@{/edit/} + ${ddpfm.ID}"><i class="far fa-edit"></i></a>
+			                    &nbsp;&nbsp;&nbsp;
+			                    <a th:href="@{/delete/} + ${ddpfm.ID}"><i class="fas fa-trash-alt"></i></a>
+			                </td>
+			            </tr>
+			        </tbody>
+    			</table>
+
+                <div class="line"></div>
+
+                
+            </div>
+        </div>
+
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
+    </body>
+</html>
