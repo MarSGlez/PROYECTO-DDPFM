@@ -102,8 +102,6 @@
         <form action="#" th:action="@{/save}" th:object="${sale}"
             method="post">
  
-	                    <label for="ID">ID</label>
-	                    <input type="text" th:field="*{ID}" placeholder="ID..." />
 	                    
 	                    <label for="TIPO DE PERSONA">TIPO DE PERSONA:</label>
 	                    <select th:field="*{TIPO_DE_PERSONA}">
@@ -115,8 +113,12 @@
 	                    <label for="ID">ID DE PERSONA</label>
 	                    <input type="text" th:field="*{ID_DE_PERSONA}" placeholder="ID de persona..."/>
 	
-	                    <label for="ID DE DOMICILIO">ID DE DOMICILIO</label>
-	                    <input type="text" th:field="*{ID_DE_DOMICILIO}" placeholder="ID de domicilio..."/>
+	                    <label for="ID DE DOMICILIO">DOMICILIO</label>
+	                    <!-- <input type="text" th:field="*{ID_DE_DOMICILIO}" placeholder="ID de domicilio..."/> -->
+	                    <select th:field="*{ID_DE_DOMICILIO}">
+	                    <option value="0">Seleccionar Domicilio</option>
+	                    <option th:each="listDomicilio : ${listDomicilio}" th:value="${listDomicilio.ID}" th:text="${listDomicilio.CALLE}"></option>
+						</select>
 
 	                    <label for="TIPO DE DOMIICLIO">TIPO DE DOMICLIO</label>
 	                    <select th:field="*{TIPO_DE_DOMICILIO}">
@@ -137,7 +139,7 @@
     		</div>
 
                 <div class="line"></div>
-
+					
                 
             </div>
         </div>

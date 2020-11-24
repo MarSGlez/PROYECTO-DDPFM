@@ -16,17 +16,30 @@ public class AppController {
 	
 	@Autowired
 	private SalesDAO dao;
+	@Autowired
+	private DomicilioDAO Domdao;
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
 		List<Sale> listSale = dao.list();
 		model.addAttribute("listSale", listSale);
+		
 	    return "index";
+	}
+	
+	@RequestMapping("/domicilio")
+	public String viewDomicilioPage(Model model) {
+		List<Domicilio> listDomicilio = Domdao.listDom();
+		model.addAttribute("listDomicilio", listDomicilio);
+		
+	    return "domicilio";
 	}
 	
 	@RequestMapping("/new")
 	public String showNewForm(Model model) {
 	    Sale sale = new Sale();
+	    List<Domicilio> listDomicilio = Domdao.listDom();
+		model.addAttribute("listDomicilio", listDomicilio);
 	    model.addAttribute("sale", sale);
 	     
 	    return "new_form";
