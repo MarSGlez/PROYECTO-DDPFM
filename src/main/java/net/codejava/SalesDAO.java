@@ -17,11 +17,11 @@ public class SalesDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	public List<Sale> list() {
-		String sql = "SELECT * FROM DDPFM";
+		String sql = "SELECT d.ID, d.TIPO_DE_PERSONA, d.ID_DE_PERSONA, do.CALLE, d.FECHA_DE_INICIO, d.FECHA_DE_FIN FROM DDPFM d LEFT JOIN DOMICILIO do ON d.ID_DE_DOMICILIO =  do.ID";
 
 		List<Sale> listSale = jdbcTemplate.query(sql, 
 				BeanPropertyRowMapper.newInstance(Sale.class));
-
+		
 		return listSale;
 	}
 	

@@ -10,6 +10,7 @@ public class Sale {
 	private int ID_DE_PERSONA;
 	private int ID_DE_DOMICILIO;
 	private String TIPO_DE_DOMICILIO;
+	private String CALLE;
 	private Date FECHA_DE_INICIO;
 	private Date FECHA_DE_FIN;
 
@@ -17,12 +18,13 @@ public class Sale {
 	}
 
 	protected Sale(int ID, String TIPO_DE_PERSONA, int ID_DE_PERSONA, int ID_DE_DOMICILIO,
-    		String TIPO_DE_DOMICILIO, Date FECHA_DE_INICIO, Date FECHA_DE_FIN) {
+    		String TIPO_DE_DOMICILIO, String CALLE, Date FECHA_DE_INICIO, Date FECHA_DE_FIN) {
         this.ID = ID;
         this.TIPO_DE_PERSONA = TIPO_DE_PERSONA;
         this.ID_DE_PERSONA = ID_DE_PERSONA;
         this.ID_DE_DOMICILIO = ID_DE_DOMICILIO;
         this.TIPO_DE_DOMICILIO = TIPO_DE_DOMICILIO;
+        this.CALLE = CALLE;
         this.FECHA_DE_INICIO = FECHA_DE_INICIO;
         this.FECHA_DE_FIN =  FECHA_DE_FIN;
     }
@@ -56,6 +58,12 @@ public class Sale {
 	}
 	public void setTIPO_DE_DOMICILIO(String TIPO_DE_DOMICILIO) {
 		this.TIPO_DE_DOMICILIO = TIPO_DE_DOMICILIO;
+	}
+	public String getCALLE() {
+		return CALLE;
+	}
+	public void setCALLE(String CALLE) {
+		this.CALLE = CALLE;
 	}
 	public Date getFECHA_DE_INICIO() {
 		return FECHA_DE_INICIO;

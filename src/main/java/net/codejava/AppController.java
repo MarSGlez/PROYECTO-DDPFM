@@ -22,7 +22,9 @@ public class AppController {
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
 		List<Sale> listSale = dao.list();
+		List<Domicilio> listDomicilio = Domdao.listDom();
 		model.addAttribute("listSale", listSale);
+		model.addAttribute("listDomicilio", listDomicilio);
 		
 	    return "index";
 	}
