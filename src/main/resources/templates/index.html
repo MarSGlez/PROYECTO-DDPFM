@@ -43,6 +43,7 @@
                     <li>
                    	    <a href="/">Home</a>
                         <a href="new">Nuevo Directorio</a>
+                        <!--  <a href="search">Busqueda Directorio</a>-->
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Agregar</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li><a href="new">Nuevo Directorio</a></li>
@@ -78,7 +79,6 @@
                         </div>
                     </div>
                 </nav>
-
                 <h2>Lista DDPFM</h2>  
                 <table>
 			        <thead>
@@ -102,7 +102,10 @@
 			                <td>
 			                   <a th:href="@{/edit/} + ${ddpfm.ID}"><i class="far fa-edit"></i></a>
 			                    &nbsp;&nbsp;&nbsp;
-			                    <a th:href="@{/delete/} + ${ddpfm.ID}"><i class="fas fa-trash-alt"></i></a>
+			                    <a th:href="@{/delete/} + ${ddpfm.ID}"><i class="fas fa-trash-alt"></i></a> 
+			                    &nbsp;&nbsp;&nbsp;
+			                    <a th:href="@{/details/} + ${ddpfm.ID}"><i class="fas fa-info-circle"></i></a>
+			                    
 			                </td>
 			            </tr>
 			        </tbody>
@@ -124,6 +127,7 @@
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
+                                 
              });
          </script>
     </body>

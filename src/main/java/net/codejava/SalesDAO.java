@@ -40,6 +40,14 @@ public class SalesDAO {
 		return sale;
 	}
 	
+	public Sale getDetail(int id) {
+		String sql = "SELECT d.ID, d.TIPO_DE_PERSONA, d.ID_DE_PERSONA, do.CALLE, do.NUMERO, do.NUMERO_INTERIOR, do.ID_DE_ASENTAMIENTO FROM DDPFM d INNER JOIN DOMICILIO do ON d.ID_DE_DOMICILIO =  do.ID WHERE d.ID = ?";
+		Object[] args = {id};
+		Sale sale = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Sale.class));
+		return sale;
+	}
+	
+	
 	public void update(Sale sale) {
 		String sql = "UPDATE DDPFM SET ID=:ID, TIPO_DE_PERSONA=:TIPO_DE_PERSONA, ID_DE_PERSONA=:ID_DE_PERSONA, ID_DE_DOMICILIO=:ID_DE_DOMICILIO, TIPO_DE_DOMICILIO=:TIPO_DE_DOMICILIO, FECHA_DE_INICIO=:FECHA_DE_INICIO, FECHA_DE_FIN=:FECHA_DE_FIN WHERE ID=:ID";
 		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(sale);
@@ -50,5 +58,12 @@ public class SalesDAO {
 	public void delete(int id) {
 		String sql = "DELETE FROM DDPFM WHERE ID = ?";
 		jdbcTemplate.update(sql, id);
+	}
+	
+	public Sale search(String query) {
+		String sql = "SELECT * FROM DDPFM WHERE TIPO_DE_PERSONA LIKE '%:query%'";
+		Object[] args = {query};
+		Sale sale = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Sale.class));
+		return sale;
 	}
 }

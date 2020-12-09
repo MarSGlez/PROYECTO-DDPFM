@@ -47,6 +47,22 @@ public class AppController {
 	    return "new_form";
 	}
 	
+	@RequestMapping("/search")
+	public String showSearch(Model model) {
+	    Sale sale = new Sale();
+	    model.addAttribute("sale", sale);
+	     
+	    return "search";
+	}
+	
+	@RequestMapping(value = "/buqueda", method = RequestMethod.POST)
+	public String buqueda(@ModelAttribute("txtbusca") String query) {
+	    dao.search(query);
+	     
+	    return "search";
+	}
+	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute("sale") Sale sale) {
 	    dao.save(sale);
@@ -58,6 +74,15 @@ public class AppController {
 	public ModelAndView showEditForm(@PathVariable(name = "ID") int id) {
 	    ModelAndView mav = new ModelAndView("edit_form");
 	    Sale sale = dao.get(id);
+	    mav.addObject("sale", sale);
+	     
+	    return mav;
+	}
+	
+	@RequestMapping("/details/{ID}")
+	public ModelAndView showDetailsForm(@PathVariable(name = "ID") int id) {
+	    ModelAndView mav = new ModelAndView("details");
+	    Sale sale = dao.getDetail(id);
 	    mav.addObject("sale", sale);
 	     
 	    return mav;
