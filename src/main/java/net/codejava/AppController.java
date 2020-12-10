@@ -20,6 +20,8 @@ public class AppController {
 	private DomicilioDAO Domdao;
 	@Autowired
 	private organizacionDAO Orgdao;
+	@Autowired
+	private personaDAO perdao;
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
@@ -42,8 +44,10 @@ public class AppController {
 	@RequestMapping("/new")
 	public String showNewForm(Model model) {
 	    List<organizacion> listOrganizacion = Orgdao.listOrg();
+	    List<persona> listPersona = perdao.listPer();
 	    //List<Domicilio> listDomicilio = Domdao.listDom();
 		model.addAttribute("listOrganizacion", listOrganizacion);
+		model.addAttribute("listPersona", listPersona);
 	     
 	    return "new_form";
 	}
