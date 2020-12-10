@@ -12,6 +12,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
 	 
@@ -46,6 +49,18 @@
 	  background-color: #f2f2f2;
 	  padding: 20px;
 	}
+	table {
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		th, td {
+		  padding: 8px;
+		  text-align: left;
+		  border-bottom: 1px solid #ddd;
+		}
+		
+		tr:hover {background-color:#f5f5f5;}
 	</style>
 
 
@@ -97,7 +112,48 @@
                     </div>
                 </nav>
 
-                <h2>Nuevo Directorio</h2>  
+                <h3>Nuevo Registro</h3> 
+                <div class="container">
+				  <form class="form-inline" action="#" th:object="${sale}">
+				    <div class="form-group">
+				      <label for="pwd">¿Que tipo de persona se va a registrar?</label>
+				     <select class="form-control" id="SelectFM">
+				          <option value="">SELECCIONE UNA OPCION</option>
+					      <option value="1">FISICA</option>
+					      <option value="2">MORAL</option>
+				    </select>
+				    </div>
+				  </form>
+				</div>
+				
+				<div id="one" style="display: none">HOLA HOLA TEST</div>
+				<div class="container" id="two" style="display: none">
+					<h2>Lista Persona Moral</h2>  
+                <table>
+			        <thead>
+			            <tr>
+			                <th>ID</th>
+			                <th>Nombre</th>
+			                <th>Fecha Creacion</th>
+			                <th>Fecha Fin</th>
+			            </tr>
+			        </thead>
+			       	 <tbody>
+			            <tr th:each="org : ${listOrganizacion}">
+			                <td th:text="${org.ID}">ID</td>
+			                <td th:text="${org.NOMBRE}">NOMBRE</td>
+			                <td th:text="${org.FECHA_DE_CREACION}">FECHA_DE_INICIO</td>
+			                <td th:text="${org.FECHA_DE_FIN}">FECHA_DE_FIN</td>
+			                <td>
+			                   <a th:href="@{/edit/} + ${org.ID}"><i class="far fa-edit"></i></a>
+			                </td>
+			            </tr>
+			        </tbody>
+    			</table>				
+	
+				</div>
+				
+                <!--  
                 <div class="form">
         <form action="#" th:action="@{/save}" th:object="${sale}"
             method="post">
@@ -108,13 +164,13 @@
 	                    <option th:value="'Moral'" th:text="Moral"></option>
 	                    <option th:value="'Fisica'" th:text="Fisica"></option>
 						</select>
-	                    <!--  <td><input type="text" th:field="*{TIPO_DE_PERSONA}" /></td>-->
+	                    <!--  <td><input type="text" th:field="*{TIPO_DE_PERSONA}" /></td>
 
 	                    <label for="ID">ID DE PERSONA</label>
 	                    <input type="text" th:field="*{ID_DE_PERSONA}" placeholder="ID de persona..."/>
 	
 	                    <label for="ID DE DOMICILIO">DOMICILIO</label>
-	                    <!-- <input type="text" th:field="*{ID_DE_DOMICILIO}" placeholder="ID de domicilio..."/> -->
+	                    <!-- <input type="text" th:field="*{ID_DE_DOMICILIO}" placeholder="ID de domicilio..."/> 
 	                    <select th:field="*{ID_DE_DOMICILIO}">
 	                    <option value="0">Seleccionar Domicilio</option>
 	                    <option th:each="listDomicilio : ${listDomicilio}" th:value="${listDomicilio.ID}" th:text="${listDomicilio.CALLE}"></option>
@@ -126,7 +182,7 @@
 	                    <option th:value="'Fisico'" th:text="Fisico"></option>
 						</select>
 						
-	                    <!-- <td><input type="text" th:field="*{TIPO_DE_DOMICILIO}" /></td> -->
+	                    <!-- <td><input type="text" th:field="*{TIPO_DE_DOMICILIO}" /></td> 
 	                    <label for="FECHA DE Inicio">FECHA DE INICIO</label>
 	                    <input type="text" th:field="*{FECHA_DE_INICIO}" placeholder="Ejemplo 2020/02/20..." />
 	                    
@@ -137,7 +193,7 @@
 	       
         		</form>
     		</div>
-
+-->
                 <div class="line"></div>
 					
                 
@@ -154,6 +210,23 @@
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
+                 
+                 $('#SelectFM').change(function () {
+                     var val = $(this).val();
+                     if(val =="1"){
+                         $('#one').show();
+                         $('#two').hide();
+                     }else{
+                    	 $('#one').hide();
+                         $('#two').show();
+                     }
+                     if(val ==""){
+                         $('#one').hide();
+                         $('#two').hide();
+                     }
+                     
+                 });
+
              });
          </script>
     </body>

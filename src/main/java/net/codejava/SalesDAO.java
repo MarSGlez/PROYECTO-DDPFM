@@ -17,7 +17,7 @@ public class SalesDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	public List<Sale> list() {
-		String sql = "SELECT d.ID, d.TIPO_DE_PERSONA, d.ID_DE_PERSONA, do.CALLE, d.FECHA_DE_INICIO, d.FECHA_DE_FIN FROM DDPFM d LEFT JOIN DOMICILIO do ON d.ID_DE_DOMICILIO =  do.ID";
+		String sql = "SELECT d.ID, d.TIPO_DE_PERSONA, p.NOMBRE, do.CALLE, d.FECHA_DE_INICIO, d.FECHA_DE_FIN FROM DDPFM d, RUIC.PERSONA p, DOMICILIO do WHERE d.ID_DE_DOMICILIO =  do.ID AND d.ID_DE_PERSONA=p.ID";
 
 		List<Sale> listSale = jdbcTemplate.query(sql, 
 				BeanPropertyRowMapper.newInstance(Sale.class));

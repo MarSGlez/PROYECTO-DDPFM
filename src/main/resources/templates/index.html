@@ -85,7 +85,7 @@
 			            <tr>
 			                <th>ID</th>
 			                <th>Tipo de Persona</th>
-			                <th>Id de Persona</th>
+			                <th>Nombre</th>
 			                <th>Domicilio</th>
 			                <th>Fecha de Inicio</th>
 			                <th>Fecha de Fin</th>
@@ -95,7 +95,7 @@
 			            <tr th:each="ddpfm : ${listSale}">
 			                <td th:text="${ddpfm.ID}">ID</td>
 			                <td th:text="${ddpfm.TIPO_DE_PERSONA}">TIPO_DE_PERSONA</td>
-			                <td th:text="${ddpfm.ID_DE_PERSONA}">ID_DE_PERSONA</td>
+			                <td th:text="${ddpfm.NOMBRE}">ID_DE_PERSONA</td>
 			                <td th:text="${ddpfm.CALLE}">ID_DE_DOMICILIO</td>
 			                <td th:text="${ddpfm.FECHA_DE_INICIO}">FECHA_DE_INICIO</td>
 			                <td th:text="${ddpfm.FECHA_DE_FIN}">FECHA_DE_FIN</td>
