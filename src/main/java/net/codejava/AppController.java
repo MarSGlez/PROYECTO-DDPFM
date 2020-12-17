@@ -87,10 +87,10 @@ public class AppController {
 	@RequestMapping("/new-moral/{ID}/{NOMBRE}")
 	public ModelAndView showNewMForm(@PathVariable(name = "ID") int id, @PathVariable(name = "NOMBRE") String name) {
 	    ModelAndView mav = new ModelAndView("new_registro");
-	   /* Sale sale = new Sale();
+	    Sale sale = new Sale();
 	    mav.addObject("sale", sale);
 	    List<Domicilio> listDomicilio = Domdao.listDom();
-		mav.addObject("listDomicilio", listDomicilio);*/
+		mav.addObject("listDomicilio", listDomicilio);
 	    mav.addObject("id", id);
 	    mav.addObject("nombre", name);
 	     

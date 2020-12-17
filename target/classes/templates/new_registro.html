@@ -11,10 +11,60 @@
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     <body>
+    <style>
+	input[type=text], select {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin: 8px 0;
+	  display: inline-block;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-sizing: border-box;
+	}
+	
+	input[type=submit] {
+	  width: 100%;
+	  background-color: #7386D5;
+	  color: white;
+	  padding: 14px 20px;
+	  margin: 8px 0;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	
+	input[type=submit]:hover {
+	  background-color: #45a049;
+	}
+	
+	form {
+	  border-radius: 5px;
+	  background-color: #f2f2f2;
+	  padding: 20px;
+	}
+	table {
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		th, td {
+		  padding: 8px;
+		  text-align: left;
+		  border-bottom: 1px solid #ddd;
+		}
+		
+		tr:hover {background-color:#f5f5f5;}
+		
+		.tab-moral{
+			width: 800px;
+			padding: 10px;
+		}
+	</style>
+    
     
         <div class="wrapper">
             <!-- Sidebar Holder -->
@@ -64,10 +114,53 @@
                         </div>
                     </div>
                 </nav>
-                <!--  -->
+                <!-- 
                  <h1 th:text="${id}"></h1>
-                 <h1 th:text="${nombre}"></h1>
+                 <h1 th:text="${nombre}"></h1> -->
                 <div class="line"></div>
+                <h3>Nuevo Registro</h3>   
+                <div class="form">
+        <form action="#" th:action="@{/save}" th:object="${sale}"
+            method="post">
+ 
+	                    <label for="TIPO DE PERSONA">TIPO DE PERSONA:</label>
+	                    <select th:field="*{TIPO_DE_PERSONA}">
+	                    <option th:value="'Moral'" th:text="Moral"></option>
+	                    <option th:value="'Fisica'" th:text="Fisica"></option>
+						</select>
+	                    <!--  <td><input type="text" th:field="*{TIPO_DE_PERSONA}" /></td>-->
+
+	                    <label for="ID">ID DE PERSONA</label>
+	                    <input type="text" id="idPersona" th:field="*{ID_DE_PERSONA}" readonly/>
+	                    
+	                    <label for="ID">Nombre</label>
+	                    <input type="text" id="nombreDD" readonly/> 
+	
+	                    <label for="ID DE DOMICILIO">DOMICILIO</label>
+	                    <!-- <input type="text" th:field="*{ID_DE_DOMICILIO}" placeholder="ID de domicilio..."/> -->
+	                    <select th:field="*{ID_DE_DOMICILIO}">
+	                    <option value="0">Seleccionar Domicilio</option>
+	                    <option th:each="listDomicilio : ${listDomicilio}" th:value="${listDomicilio.ID}" th:text="${listDomicilio.CALLE}"></option>
+						</select>
+
+	                    <label for="TIPO DE DOMIICLIO">TIPO DE DOMICLIO</label>
+	                    <select th:field="*{TIPO_DE_DOMICILIO}">
+	                    <option th:value="'Moral'" th:text="Moral"></option>
+	                    <option th:value="'Fisico'" th:text="Fisico"></option>
+						</select>
+						
+	                    <!-- <td><input type="text" th:field="*{TIPO_DE_DOMICILIO}" /></td> -->
+	                    <label for="FECHA DE Inicio">FECHA DE INICIO</label>
+	                    <input type="text" th:field="*{FECHA_DE_INICIO}" placeholder="Ejemplo 2020/02/20..." />
+	                    
+	                    <label  for="FECHA DE FIN">FECHA DE FIN</label>
+	                    <input type="text" th:field="*{FECHA_DE_FIN}" placeholder="Ejemplo 2020/02/20..." />
+	              
+	                   <input type="submit" value="Submit">
+	       
+        		</form>
+    		</div>
+                
 
                 
             </div>
@@ -85,6 +178,16 @@
                  });
                                  
              });
+             
          </script>
+         <script th:inline="javascript">
+			/*<![CDATA[*/
+				var value = /*[[${id}]]*/ 'default';
+				var val = /*[[${nombre}]]*/ 'default';
+				console.log(val);
+				$("#idPersona").val(value);
+				$("#nombreDD").val(val);
+			/*]]>*/
+		</script>
     </body>
 </html>
