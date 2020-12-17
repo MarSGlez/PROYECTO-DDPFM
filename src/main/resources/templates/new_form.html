@@ -178,7 +178,7 @@
 			                <td th:text="${org.FECHA_DE_CREACION}">FECHA_DE_INICIO</td>
 			                <td th:text="${org.FECHA_DE_FIN}">FECHA_DE_FIN</td>
 			                <td>
-			                   <a th:href="@{/edit/} + ${org.ID}"><i class="far fa-edit"></i></a>
+			                   <a th:href="@{/new-moral/} + ${org.ID} + '/' + ${org.NOMBRE}"><i class="far fa-edit"></i></a>
 			                </td>
 			            </tr>
 			        </tbody>
@@ -186,47 +186,7 @@
 	
 				</div>
 				
-                <!--  
-                <div class="form">
-        <form action="#" th:action="@{/save}" th:object="${sale}"
-            method="post">
- 
-	                    
-	                    <label for="TIPO DE PERSONA">TIPO DE PERSONA:</label>
-	                    <select th:field="*{TIPO_DE_PERSONA}">
-	                    <option th:value="'Moral'" th:text="Moral"></option>
-	                    <option th:value="'Fisica'" th:text="Fisica"></option>
-						</select>
-	                    <!--  <td><input type="text" th:field="*{TIPO_DE_PERSONA}" /></td>
-
-	                    <label for="ID">ID DE PERSONA</label>
-	                    <input type="text" th:field="*{ID_DE_PERSONA}" placeholder="ID de persona..."/>
-	
-	                    <label for="ID DE DOMICILIO">DOMICILIO</label>
-	                    <!-- <input type="text" th:field="*{ID_DE_DOMICILIO}" placeholder="ID de domicilio..."/> 
-	                    <select th:field="*{ID_DE_DOMICILIO}">
-	                    <option value="0">Seleccionar Domicilio</option>
-	                    <option th:each="listDomicilio : ${listDomicilio}" th:value="${listDomicilio.ID}" th:text="${listDomicilio.CALLE}"></option>
-						</select>
-
-	                    <label for="TIPO DE DOMIICLIO">TIPO DE DOMICLIO</label>
-	                    <select th:field="*{TIPO_DE_DOMICILIO}">
-	                    <option th:value="'Moral'" th:text="Moral"></option>
-	                    <option th:value="'Fisico'" th:text="Fisico"></option>
-						</select>
-						
-	                    <!-- <td><input type="text" th:field="*{TIPO_DE_DOMICILIO}" /></td> 
-	                    <label for="FECHA DE Inicio">FECHA DE INICIO</label>
-	                    <input type="text" th:field="*{FECHA_DE_INICIO}" placeholder="Ejemplo 2020/02/20..." />
-	                    
-	                    <label  for="FECHA DE FIN">FECHA DE FIN</label>
-	                    <input type="text" th:field="*{FECHA_DE_FIN}" placeholder="Ejemplo 2020/02/20..." />
-	              
-	                   <input type="submit" value="Submit">
-	       
-        		</form>
-    		</div>
--->
+               
                 <div class="line"></div>
 					
                 
