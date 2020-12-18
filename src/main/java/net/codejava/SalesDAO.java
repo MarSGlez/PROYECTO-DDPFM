@@ -33,6 +33,14 @@ public class SalesDAO {
 		insertActor.execute(param);		
 	}
 	
+	public void savePF(Sale sale) {
+		SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
+		insertActor.withTableName("DDPFM").usingColumns("ID", "TIPO_DE_PERSONA", "ID_DE_PERSONA", "ID_DE_DOMICILIO", "TIPO_DE_DOMICILIO", "FECHA_DE_INICIO", "FECHA_DE_FIN");
+		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(sale);
+		
+		insertActor.execute(param);		
+	}
+	
 	public Sale get(int id) {
 		String sql = "SELECT * FROM DDPFM WHERE ID = ?";
 		Object[] args = {id};

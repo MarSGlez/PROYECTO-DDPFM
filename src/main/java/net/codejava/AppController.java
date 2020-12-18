@@ -70,9 +70,17 @@ public class AppController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute("sale") Sale sale) {
-	    dao.save(sale);
+		System.out.println(sale.getTIPO_DE_PERSONA());
+		if(sale.getTIPO_DE_PERSONA().equals("Moral")) {
+			 dao.save(sale);
+			 return "redirect:/";
+			  
+		}else {
+			 dao.savePF(sale);
+			 return "redirect:/";
+		}
 	     
-	    return "redirect:/";
+	    
 	}
 	
 	@RequestMapping("/edit/{ID}")
